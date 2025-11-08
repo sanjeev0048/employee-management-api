@@ -1,0 +1,15 @@
+from pydantic import BaseModel
+
+class EmployeeBase(BaseModel):
+    name: str
+    role: str
+    email: str
+
+class EmployeeCreate(EmployeeBase):
+    pass
+
+class Employee(EmployeeBase):
+    id: int
+
+    class Config:
+        from_attributes = True   # ← FIXED for Pydantic v2
